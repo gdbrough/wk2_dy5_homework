@@ -8,11 +8,11 @@ require_relative("../song.rb")
 class RoomTest < MiniTest::Test
 
   def setup
-    @guest1 = Guest.new("Graeme", 49, 100)
-    @guest2 = Guest.new("Anne", 58, 10)
-    @guest3 = Guest.new("Russ", 53, 15)
-    @guest4 = Guest.new("Vincent", 30, 40)
-    @guest5 = Guest.new("Billy", 17, 45)
+    @guest1 = Guest.new("Graeme", 49, 100, "Highway to Hell")
+    @guest2 = Guest.new("Anne", 58, 10, "Sweet Child of Mine")
+    @guest3 = Guest.new("Russ", 53, 15, "Freebird")
+    @guest4 = Guest.new("Vincent", 30, 40, "It's all About Love")
+    @guest5 = Guest.new("Billy", 17, 45, "Happy")
 
     @room1 = Room.new("Rock Room", "rock", 10, 20)
     @room2 = Room.new("Ballad Room", "ballad", 5, 15)
