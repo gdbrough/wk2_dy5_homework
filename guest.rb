@@ -4,7 +4,7 @@ class Guest
 
   def initialize(name, age)
     @name = name
-    @age = name
+    @age = age
   end
 
 end
