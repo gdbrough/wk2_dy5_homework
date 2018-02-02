@@ -28,8 +28,8 @@ class Room
     return false
   end
 
-  def check_in_to_room(guest_name)
-    @guests << guest_name if total_guests_in_room() < room_capacity()
+  def check_in_to_room(guest)
+    @guests << guest if (total_guests_in_room() < room_capacity()) && guest_has_sufficient_monies(guest)
   end
 
   def check_out_of_room(guest_name)
