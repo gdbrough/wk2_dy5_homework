@@ -56,18 +56,6 @@ class RoomTest < MiniTest::Test
     assert_equal(1, @room1.total_guests_in_room())
   end
 
-  def test_guest_can_check_out_of_room__guest_in_room()
-    @room1.check_in_to_room(@guest1)
-    @room1.check_out_of_room(@guest1)
-    assert_equal(0, @room1.total_guests_in_room())
-  end
-
-  def test_guest_can_check_out_of_room__guest_not_in_room()
-    @room1.check_in_to_room(@guest1)
-    @room1.check_out_of_room(@guest2)
-    assert_equal(1, @room1.total_guests_in_room())
-  end
-
   def test_guest_cannot_check_in_to_room_if_at_capacity()
     @room3.check_in_to_room(@guest1)
     assert_equal(1, @room3.total_guests_in_room())
@@ -79,6 +67,18 @@ class RoomTest < MiniTest::Test
     assert_equal(3, @room3.total_guests_in_room())
     @room3.check_in_to_room(@guest5)
     assert_equal(3, @room3.total_guests_in_room())
+  end
+
+  def test_guest_can_check_out_of_room__guest_in_room()
+    @room1.check_in_to_room(@guest1)
+    @room1.check_out_of_room(@guest1)
+    assert_equal(0, @room1.total_guests_in_room())
+  end
+
+  def test_guest_can_check_out_of_room__guest_not_in_room()
+    @room1.check_in_to_room(@guest1)
+    @room1.check_out_of_room(@guest2)
+    assert_equal(1, @room1.total_guests_in_room())
   end
 
   def test_number_of_songs_in_room_is_returned()
@@ -110,6 +110,11 @@ class RoomTest < MiniTest::Test
   def test_guest_has_sufficient_monies_for_entry_fee__not_enough()
     result = @room1.guest_has_sufficient_monies(@guest3)
     assert_equal(false, result)
+  end
+
+  def test_entry_fee_can_be_deduced__succesful_entry()
+    @room1.deduct_entry_fee(@guest1)
+    assert_equal(80, @guest1.monies)
   end
 
 end

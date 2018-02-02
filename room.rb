@@ -32,6 +32,10 @@ class Room
     @guests << guest if (total_guests_in_room() < room_capacity()) && guest_has_sufficient_monies(guest)
   end
 
+  def deduct_entry_fee(guest)
+    guest.monies -= room_entry_fee
+  end
+
   def check_out_of_room(guest_name)
     @guests.delete(guest_name) if @guests.include?(guest_name)
   end

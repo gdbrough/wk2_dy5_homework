@@ -1,6 +1,7 @@
 class Guest
 
   attr_reader :name, :age, :monies
+  attr_writer :monies
 
   def initialize(name, age, monies)
     @name = name
@@ -10,7 +11,6 @@ class Guest
 
   def available_monies()
     return @monies
-    # return guest.@monies
   end
 
 end

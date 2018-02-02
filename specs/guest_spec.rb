@@ -22,7 +22,6 @@ class GuestTest < MiniTest::Test
   end
 
   def test_returns_monies
-    # @guest2.available_monies()
     assert_equal(10, @guest2.available_monies())
   end
 
