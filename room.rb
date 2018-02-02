@@ -19,7 +19,7 @@ class Room
   end
 
   def check_in_to_room(guest_name)
-    @guests << guest_name
+    @guests << guest_name if total_guests_in_room < room_capacity
   end
 
   def check_out_of_room(guest_name)
