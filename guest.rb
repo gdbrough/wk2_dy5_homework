@@ -8,8 +8,9 @@ class Guest
     @monies = monies
   end
 
-  def available_monies
+  def available_monies()
     return @monies
+    # return guest.@monies
   end
 
 end

@@ -14,9 +14,9 @@ class RoomTest < MiniTest::Test
     @guest4 = Guest.new("Vincent", 30, 40)
     @guest5 = Guest.new("Billy", 17, 45)
 
-    @room1 = Room.new("Rock Room", "rock", 10)
-    @room2 = Room.new("Ballad Room", "ballad", 5)
-    @room3 = Room.new("Pop Room", "pop", 3)
+    @room1 = Room.new("Rock Room", "rock", 10, 20)
+    @room2 = Room.new("Ballad Room", "ballad", 5, 15)
+    @room3 = Room.new("Pop Room", "pop", 3, 10)
 
     @song1 = Song.new("Highway to Hell", "AC/DC", "rock")
     @song2 = Song.new("Sweet Child of Mine", "Guns n Roses", "rock")
@@ -39,6 +39,10 @@ class RoomTest < MiniTest::Test
 
   def test_check_number_of_guests_in_room()
     assert_equal(0, @room1.total_guests_in_room())
+  end
+
+  def test_returns_room_entry_fee()
+    assert_equal(15, @room2.room_entry_fee())
   end
 
   def test_guest_can_check_in_to_room()
@@ -90,6 +94,16 @@ class RoomTest < MiniTest::Test
     @room2.add_song_to_room(@song4)
     @room2.remove_song_from_room(@song3)
     assert_equal(1, @room2.total_songs_in_room)
+  end
+
+  def test_guest_has_sufficient_monies_for_entry_fee__has_enough()
+    result = @room1.guest_has_sufficient_monies(@guest1)
+    assert_equal(true, result)
+  end
+
+  def test_guest_has_sufficient_monies_for_entry_fee__not_enough()
+    result = @room1.guest_has_sufficient_monies(@guest3)
+    assert_equal(false, result)
   end
 
 end

@@ -1,11 +1,12 @@
 class Room
 
-  attr_reader :name, :genre, :capacity
+  attr_reader :name, :genre, :capacity, :entry_fee
 
-  def initialize(name, genre, capacity)
+  def initialize(name, genre, capacity, entry_fee)
     @name = name
     @genre = genre
     @capacity = capacity
+    @entry_fee = entry_fee
     @guests = []
     @songs = []
   end
@@ -18,8 +19,17 @@ class Room
     return @guests.length()
   end
 
+  def room_entry_fee()
+    return @entry_fee
+  end
+
+  def guest_has_sufficient_monies(guest_name)
+    return true if guest_name.available_monies >= room_entry_fee()
+    return false
+  end
+
   def check_in_to_room(guest_name)
-    @guests << guest_name if total_guests_in_room < room_capacity
+    @guests << guest_name if total_guests_in_room() < room_capacity()
   end
 
   def check_out_of_room(guest_name)
