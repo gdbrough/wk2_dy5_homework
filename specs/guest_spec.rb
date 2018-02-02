@@ -17,7 +17,7 @@ class GuestTest < MiniTest::Test
     assert_equal("Graeme", @guest1.name)
   end
 
-  def test_age_returned
+  def test_age_returned()
     assert_equal(17, @guest5.age)
   end
 
