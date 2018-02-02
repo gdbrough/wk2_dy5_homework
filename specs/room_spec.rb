@@ -75,4 +75,9 @@ class RoomTest < MiniTest::Test
     assert_equal(1, @room2.total_songs_in_room)
   end
 
+  def test_returns_room_capacity()
+    # @room3.room.capacity()
+    assert_equal(3, @room3.room_capacity())
+  end
+
 end

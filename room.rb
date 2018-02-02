@@ -2,12 +2,16 @@ class Room
 
   attr_reader :name, :genre, :capacity
 
-  def initialize(name, genre, capcity)
+  def initialize(name, genre, capacity)
     @name = name
     @genre = genre
-    @capcity = capacity
+    @capacity = capacity
     @guests = []
     @songs = []
+  end
+
+  def room_capacity()
+    return @capacity
   end
 
   def total_guests_in_room()
