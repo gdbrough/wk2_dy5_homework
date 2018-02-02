@@ -20,4 +20,15 @@ class Tab
     return @amount[@guest.index(name)]
   end
 
+  def get_all_info_from_tab_for(name)
+    tab_guest = @guest[@guest.index(name)]
+    tab_item = @item[@guest.index(name)]
+    tab_amount = @amount[@guest.index(name)]
+    return "#{tab_guest}: #{tab_item} - #{tab_amount}"
+  end
+
+  def get_total_for_all_tab_transactions
+    return @amount.sum
+  end
+
 end

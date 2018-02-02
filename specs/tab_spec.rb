@@ -20,7 +20,7 @@ class TabTest < MiniTest::Test
 
     @tab = Tab.new(
       ["Graeme", "Russ", "Billy", "Teeny"],
-      ["Room 1 Entry Fee", "Room 2 Entry Fee", "Room 3 Entry Fee", "Room 2 Entry Fee"],
+      ["Room 1 Entry Fee", "Room 2 Entry Fee", "Room 3 Entry Fee", "Ear Plugs"],
       [10, 5, 3, 5])
   end
 
@@ -30,13 +30,23 @@ class TabTest < MiniTest::Test
   end
 
   def test_item_can_be_returned_from_tab
-    result = @tab.get_item_from_tab_for("Billy")
-    assert_equal("Room 3 Entry Fee", result)
+    result = @tab.get_item_from_tab_for("Teeny")
+    assert_equal("Ear Plugs", result)
   end
 
   def test_amount_can_be_returned_from_tab
-    result = @tab.get_amount_from_tab_for("Teeny")
+    result = @tab.get_amount_from_tab_for("Russ")
     assert_equal(5, result)
+  end
+
+  def test_returns_all_info_from_tab
+    result = @tab.get_all_info_from_tab_for("Graeme")
+    assert_equal("Graeme: Room 1 Entry Fee - 10", result)
+  end
+
+  def test_total_all_tab_transactions
+    result = @tab.get_total_for_all_tab_transactions
+    assert_equal(23, result)
   end
 
 end
