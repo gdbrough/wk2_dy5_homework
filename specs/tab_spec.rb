@@ -57,6 +57,7 @@ class TabTest < MiniTest::Test
   def test_payment_can_be_added_to_guests_tab
     result = @tab.add_payment_to_tab_for("Graeme", "Ear Plugs", 5)
     assert_equal(5, @tab.get_total_number_of_transactions_on_tab)
+    assert_equal(28,@tab.get_total_for_all_tab_transactions)
   end
 
 end

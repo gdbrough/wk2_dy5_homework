@@ -1,6 +1,7 @@
 class Tab
 
   attr_reader :guest, :item, :amount
+  attr_writer :guest, :item, :amount
 
   def initialize(guest, item, amount)
     @guest = guest
